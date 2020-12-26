@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: tgbot-web-deployment-multi-pod
+  labels:
+    app : tgbot-k8s-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: cia
+  template:
+    metadata:
+      labels:
+        project: cia
+    spec:
+      containers:
+        - name : tgbot-web
+          image: nur1000/atomytelegrambot:latest
